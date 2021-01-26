@@ -14,7 +14,7 @@ const Home = () => {
             <TopSection products={products}></TopSection>
             <FeaturedProducts products={products}></FeaturedProducts>
             <Newsletter></Newsletter>
-            <Shop></Shop>
+            <Shop products={products}></Shop>
             <About></About>
         </div>
     );

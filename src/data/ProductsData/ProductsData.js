@@ -29,7 +29,7 @@ const ProductsData =[
     },
     {   
         "id" : 5,
-        "name":"Camera Len",
+        "name":"Camera Lens",
         "img":"https://i.imgur.com/2u1zl8L.jpg",
         "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         "price": 80,
