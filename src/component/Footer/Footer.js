@@ -3,7 +3,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className="footer bg-light">
             <div className="footer-page-links">
                 <a className="nav-link" aria-current="true" href="/">Home</a>
                 <a className="nav-link" aria-current="true" href="#about">About</a>
