@@ -35,7 +35,8 @@ const Header = () => {
                                     <a id="nav-last-item" className="nav-link" href="#help">Help</a>
                                 </li>
                                 <li className="nav-item">
-                                    <button type="button" className="btn btn-secondary"><FaShoppingCart /> Your Cart</button>
+                                    <button type="button" className="btn btn-secondary btn-large-screen"><FaShoppingCart /> Your Cart</button>
+                                    <button type="button" className="btn btn-secondary btn-small-screen"><FaShoppingCart /></button>
                                 </li>
                             </ul>
                         </div>
