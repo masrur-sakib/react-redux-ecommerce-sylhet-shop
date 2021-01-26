@@ -1,0 +1,8 @@
+.featured-products-section{
+    padding: 5%;
+    border-top: 1px solid #80808075;
+}
+.featured-products-section h1{
+    font-size: 40px;
+    color: grey;
+}

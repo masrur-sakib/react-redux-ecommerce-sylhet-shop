@@ -3,9 +3,11 @@ import './About.css';
 
 const About = () => {
     return (
-        <div className="about-section">
-            <h4>About Sylhet Shop</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam debitis aspernatur soluta natus molestiae excepturi, deserunt ratione voluptate inventore perferendis.</p>
+        <div id="about" className="about-section">
+            <div className="about-section-description">
+                <h1 className="about-section-tagline">About Sylhet Shop</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam debitis aspernatur soluta natus molestiae excepturi, deserunt ratione voluptate inventore perferendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam debitis aspernatur soluta natus molestiae excepturi, deserunt ratione voluptate inventore perferendis.</p>
+            </div>
         </div>
     );
 };

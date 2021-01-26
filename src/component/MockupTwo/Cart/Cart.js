@@ -2,7 +2,6 @@ import React from 'react';
 import './Cart.css';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Summary from '../Summary/Summary';
-import Footer from '../../Footer/Footer';
 
 const Cart = () => {
     return (

@@ -3,7 +3,7 @@ import './Shop.css';
 
 const Shop = () => {
     return (
-        <div>
+        <div id="shop" className="shop-section">
             <h1>Shop Component</h1>
         </div>
     );
