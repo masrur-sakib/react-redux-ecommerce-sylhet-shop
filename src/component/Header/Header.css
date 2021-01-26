@@ -7,16 +7,13 @@ li.nav-item a{
     border-right: 1px solid grey;
     line-height: 1.6;
 }
-li.nav-item button{
-    width: 150px;
-}
 #nav-last-item{
     border-right: none;
 }
 
 @media only screen and (max-width: 770px) {
     .site-navbar{
-        padding: 0px 10px;
+        padding: 0px 50px 0px 10px;
     }
     li.nav-item a{
         padding: 8px 0px !important;

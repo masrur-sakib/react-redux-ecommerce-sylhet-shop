@@ -1,0 +1,30 @@
+.top-section{
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top-section-tagline{
+    padding-bottom: 5%;
+    font-size: 50px;
+    color: grey;
+}
+.top-section-image-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px 0px;
+}
+.top-section-image-section div{
+    margin: 10px 50px;
+    padding: 10px 20px;
+    border: 3px solid #80808027;
+}
+.top-section-image-section img{
+    width: 350px;
+    width: 150px;
+}
+.top-section a{
+    width: 200px;
+}
