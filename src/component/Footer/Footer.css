@@ -1,0 +1,19 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #80808075;
+}
+.footer a{
+    display: inline;
+    color: black;
+    /* padding: 30px; */
+    line-height: 2.6;
+    border-right: 1px solid grey;
+}
+#footer-last-item{
+    border-right: none;
+}

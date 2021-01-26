@@ -8,6 +8,7 @@ import Header from './component/Header/Header';
 import Home from './component/MockupOne/Home/Home';
 import Cart from './component/MockupTwo/Cart/Cart';
 import NotFound from './component/NotFound/NotFound';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer></Footer>
     </div>
   );
 }

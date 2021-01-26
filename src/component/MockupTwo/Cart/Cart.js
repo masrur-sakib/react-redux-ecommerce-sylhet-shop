@@ -10,7 +10,6 @@ const Cart = () => {
             <h1>Cart Component</h1>
             <ShoppingCart></ShoppingCart>
             <Summary></Summary>
-            <Footer></Footer>
         </div>
     );
 };
