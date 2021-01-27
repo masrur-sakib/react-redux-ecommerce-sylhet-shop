@@ -8,13 +8,13 @@ import About from '../About/About';
 import ProductsData from '../../../data/ProductsData/ProductsData'
 
 const Home = (props) => {
-    const {products, handleAddProduct} = props;
+    const {products} = props;
     return (
         <div>
             <TopSection products={products}></TopSection>
             <FeaturedProducts products={products}></FeaturedProducts>
             <Newsletter></Newsletter>
-            <Shop products={products} handleAddProduct={handleAddProduct}></Shop>
+            <Shop products={products}></Shop>
             <About></About>
         </div>
     );

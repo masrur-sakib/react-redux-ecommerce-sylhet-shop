@@ -1,75 +1,78 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addToCart } from '../../../redux/actions/sylhetShopActions';
 import './Shop.css';
 
 const Shop = (props) => {
+    const {products, addToCart} = props;
     return (
         <div id="shop" className="shop-section">
             <div className="grid-area grid-area-1">
-                <img src={props.products[0].img} alt="" />
+                <img src={products[0].img} alt="" />
                 <div className="shop-product-details">
                     <div>
-                        <p>{props.products[0].name}</p>
-                        <p>{props.products[0].price}</p>
+                        <p>{products[0].name}</p>
+                        <p>{products[0].price}</p>
                     </div>
                     <div>
                     {
-                        <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[0])}>Add cart</button>
+                        <button className="btn btn-secondary" onClick={() => addToCart(products[0])}>Add to cart</button>
                     }
                     </div>
                 </div>
             </div>
             <div className="grid-area grid-area-2">
-                <img src={props.products[1].img} alt="" />
+                <img src={products[1].img} alt="" />
                 <div className="shop-product-details">
                     <div>
-                        <p>{props.products[1].name}</p>
-                        <p>{props.products[1].price}</p>
+                        <p>{products[1].name}</p>
+                        <p>{products[1].price}</p>
                     </div>
                     <div>
                         {
-                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[1])}>Add cart</button>
+                            <button className="btn btn-secondary" onClick={() => addToCart(products[1])}>Add to cart</button>
                         }
                     </div>
                 </div>
             </div>
             <div className="grid-area grid-area-3">
-                <img src={props.products[2].img} alt="" />
+                <img src={products[2].img} alt="" />
                 <div className="shop-product-details">
                     <div>
-                        <p>{props.products[2].name}</p>
-                        <p>{props.products[2].price}</p>
+                        <p>{products[2].name}</p>
+                        <p>{products[2].price}</p>
                     </div>
                     <div>
                         {
-                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[2])}>Add cart</button>
+                            <button className="btn btn-secondary" onClick={() => addToCart(products[2])}>Add to cart</button>
                         }
                     </div>
                 </div>
             </div>
             <div className="grid-area grid-area-4">
-                <img src={props.products[3].img} alt="" />
+                <img src={products[3].img} alt="" />
                 <div className="shop-product-details">
                     <div>
-                        <p>{props.products[3].name}</p>
-                        <p>{props.products[3].price}</p>
+                        <p>{products[3].name}</p>
+                        <p>{products[3].price}</p>
                     </div>
                     <div>
                         {
-                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[3])}>Add cart</button>
+                            <button className="btn btn-secondary" onClick={() => addToCart(products[3])}>Add to cart</button>
                         }
                     </div>
                 </div>
             </div>
             <div className="grid-area grid-area-5">
-                <img src={props.products[4].img} alt="" />
+                <img src={products[4].img} alt="" />
                 <div className="shop-product-details">
                     <div>
-                        <p>{props.products[4].name}</p>
-                        <p>{props.products[4].price}</p>
+                        <p>{products[4].name}</p>
+                        <p>{products[4].price}</p>
                     </div>
                     <div>
                         {
-                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[4])}>Add cart</button>
+                            <button className="btn btn-secondary" onClick={() => addToCart(products[4])}>Add to cart</button>
                         }
                     </div>
                 </div>
@@ -78,4 +81,15 @@ const Shop = (props) => {
     );
 };
 
-export default Shop;
+
+const mapStateToProps = state => {
+    return {
+        products: state.products
+    }
+};
+
+const mapDispatchToProps = {
+    addToCart: addToCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

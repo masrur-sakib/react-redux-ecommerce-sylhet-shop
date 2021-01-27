@@ -1,19 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { clearCart } from '../../../redux/actions/sylhetShopActions';
 import './Cart.css';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Summary from '../Summary/Summary';
 import CartPageTitle from '../CartPageTitle/CartPageTitle';
 
 const Cart = (props) => {
+    const {clearCart} = props;
     // Retrieving Data from localstorage 
     let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
     let cartProductsArray = JSON.parse(retrieveProductsLocal);
-
-    const handleClearCart = () => {
-        localStorage.clear();
-        window.location.reload();
-        return false;
-    }
 
     return (
         <div id="cart" className="cart-page">
@@ -39,18 +36,28 @@ const Cart = (props) => {
                             <button className="btn btn-secondary" >Next</button>
                         </div>
                         <div>
-                            <button className="btn btn-light" onClick={() => handleClearCart()}>Cancel</button>
+                            <button className="btn btn-light" onClick={() => clearCart()}>Cancel</button>
                         </div>
                     </div>
                 </div>
                 <div className="col-md-4">
                     <h1>Summary</h1>
                     <hr width="100%"></hr>
-                    <Summary cartProductsArray={cartProductsArray} ></Summary>
+                    <Summary cartProductsArray={cartProductsArray}></Summary>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Cart;
+const mapStateToProps = state => {
+    return {
+        products: state.products
+    }
+};
+
+const mapDispatchToProps = {
+    clearCart: clearCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
