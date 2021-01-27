@@ -24,10 +24,27 @@ function App() {
     }
     else {
         newCart = [...cart, product];
-        console.log("Product Added to the Cart");
         setCart(newCart);
+
         // Storing data to localstorage
-        localStorage.setItem('setProductsLocal', JSON.stringify(newCart));
+        let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
+        let cartProductsArray = JSON.parse(retrieveProductsLocal);
+        if(cartProductsArray){
+          const sameProductLocal = cartProductsArray.find(pd => product.id === pd.id);
+          let newCartLocal;
+          if(sameProductLocal){
+            alert("Product Already Added to the Cart, You can change the quantity from Cart Page.")
+          }
+          else{
+            newCartLocal = [...cartProductsArray, product];
+            localStorage.setItem('setProductsLocal', [JSON.stringify(newCartLocal)]);
+            console.log("Product Added to the Cart");
+          }
+        }
+        else{
+          localStorage.setItem('setProductsLocal', [JSON.stringify(newCart)]);
+          console.log("Product Added to the Cart");
+        }
     }
   };
   return (

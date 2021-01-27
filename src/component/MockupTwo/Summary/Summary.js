@@ -37,7 +37,7 @@ const Summary = (props) => {
                     <p>TAXES (2%)</p>
                 </div>
                 <div className="col-md-3">
-                    <p>{taxes}</p>
+                    <p>{taxes.toFixed(2)}</p>
                 </div>
             </div>
             <hr width="100%"></hr>
