@@ -7,14 +7,14 @@ import Shop from '../Shop/Shop';
 import About from '../About/About';
 import ProductsData from '../../../data/ProductsData/ProductsData'
 
-const Home = () => {
-    const [products] = useState(ProductsData);
+const Home = (props) => {
+    const {products, handleAddProduct} = props;
     return (
         <div>
             <TopSection products={products}></TopSection>
             <FeaturedProducts products={products}></FeaturedProducts>
             <Newsletter></Newsletter>
-            <Shop products={products}></Shop>
+            <Shop products={products} handleAddProduct={handleAddProduct}></Shop>
             <About></About>
         </div>
     );

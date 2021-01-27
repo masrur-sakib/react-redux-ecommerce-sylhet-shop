@@ -1,26 +1,45 @@
+import React, { useState } from 'react';
 import './App.css';
-import Header from './component/Header/Header';
-import Home from './component/MockupOne/Home/Home';
-import Cart from './component/MockupTwo/Cart/Cart';
-import NotFound from './component/NotFound/NotFound';
-import Footer from './component/Footer/Footer';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import Header from './component/Header/Header';
+import Home from './component/MockupOne/Home/Home';
+import Cart from './component/MockupTwo/Cart/Cart';
+import NotFound from './component/NotFound/NotFound';
+import Footer from './component/Footer/Footer';
+import ProductsData from './data/ProductsData/ProductsData';
 
 function App() {
+  const [products] = useState(ProductsData);
+  const [cart, setCart] = useState([]);
+
+  const handleAddProduct = (product) => {
+    const sameProduct = cart.find(pd => pd.id === product.id);
+    let newCart;
+    if (sameProduct) {
+        alert("Product Already Added to the Cart, You can change the quantity from Cart Page.")
+    }
+    else {
+        newCart = [...cart, product];
+        console.log("Product Added to the Cart");
+        setCart(newCart);
+        // Storing data to localstorage
+        localStorage.setItem('setProductsLocal', JSON.stringify(newCart));
+    }
+  };
   return (
     <div className="App">
       <Header />
       <Router>
         <Switch>
           <Route exact path="/">
-            <Home></Home>
+            <Home products={products} handleAddProduct={handleAddProduct}></Home>
           </Route>
-          <Route exact path="/cart">
-            <Cart></Cart>
+          <Route path="/cart">
+            <Cart products={products} handleAddProduct={handleAddProduct} cart={cart}></Cart>
           </Route>
           <Route path="*">
             <NotFound></NotFound>

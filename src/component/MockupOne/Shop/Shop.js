@@ -12,7 +12,9 @@ const Shop = (props) => {
                         <p>{props.products[0].price}</p>
                     </div>
                     <div>
-                        <button className="btn btn-secondary">Add to Cart</button>
+                    {
+                        <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[0])}>Add cart</button>
+                    }
                     </div>
                 </div>
             </div>
@@ -24,7 +26,9 @@ const Shop = (props) => {
                         <p>{props.products[1].price}</p>
                     </div>
                     <div>
-                        <button className="btn btn-secondary">Add to Cart</button>
+                        {
+                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[1])}>Add cart</button>
+                        }
                     </div>
                 </div>
             </div>
@@ -36,7 +40,9 @@ const Shop = (props) => {
                         <p>{props.products[2].price}</p>
                     </div>
                     <div>
-                        <button className="btn btn-secondary">Add to Cart</button>
+                        {
+                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[2])}>Add cart</button>
+                        }
                     </div>
                 </div>
             </div>
@@ -48,7 +54,9 @@ const Shop = (props) => {
                         <p>{props.products[3].price}</p>
                     </div>
                     <div>
-                        <button className="btn btn-secondary">Add to Cart</button>
+                        {
+                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[3])}>Add cart</button>
+                        }
                     </div>
                 </div>
             </div>
@@ -60,7 +68,9 @@ const Shop = (props) => {
                         <p>{props.products[4].price}</p>
                     </div>
                     <div>
-                        <button className="btn btn-secondary">Add to Cart</button>
+                        {
+                            <button className="btn btn-secondary" onClick={() => props.handleAddProduct(props.products[4])}>Add cart</button>
+                        }
                     </div>
                 </div>
             </div>

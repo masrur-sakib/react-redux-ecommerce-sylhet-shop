@@ -2,13 +2,35 @@ import React from 'react';
 import './Cart.css';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Summary from '../Summary/Summary';
+import CartPageTitle from '../CartPageTitle/CartPageTitle';
 
-const Cart = () => {
+const Cart = (props) => {
+    // Retrieving Data from localstorage 
+    let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
+    let cartProductsArray = JSON.parse(retrieveProductsLocal);
+
     return (
-        <div className="container">
-            <h1>Cart Component</h1>
-            <ShoppingCart></ShoppingCart>
-            <Summary></Summary>
+        <div id="cart" className="cart-page">
+            <CartPageTitle></CartPageTitle>
+            <div className="row cart-and-summary-section">
+                <div className="col-md-8 cart-component-shopping-cart">
+                    <h1>Shopping Cart</h1>
+                    <hr width="100%"></hr>
+
+                    {
+                        cartProductsArray && cartProductsArray.map((product) => <ShoppingCart
+                            key={product.id}
+                            product={product}
+                            >
+                        </ShoppingCart>)
+                    }
+                </div>
+                <div className="col-md-4">
+                    <h1>Summary</h1>
+                    <hr width="100%"></hr>
+                    <Summary cartProductsArray={cartProductsArray} ></Summary>
+                </div>
+            </div>
         </div>
     );
 };

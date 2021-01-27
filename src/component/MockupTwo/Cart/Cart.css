@@ -1,0 +1,14 @@
+.cart-page{
+    min-height: 100vh;
+    overflow: hidden;
+}
+.cart-and-summary-section{
+    padding: 3%;
+}
+.cart-component-shopping-cart{
+    padding-right: 5%;
+}
+.cart-and-summary-section h1{
+    font-size: 30px;
+    color: grey;
+}
