@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Home.css';
 import TopSection from '../TopSection/TopSection';
 import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 import Newsletter from '../Newsletter/Newsletter';
 import Shop from '../Shop/Shop';
 import About from '../About/About';
-import ProductsData from '../../../data/ProductsData/ProductsData'
 
 const Home = (props) => {
     const {products} = props;
