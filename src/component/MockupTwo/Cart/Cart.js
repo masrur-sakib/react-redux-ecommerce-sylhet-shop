@@ -16,7 +16,6 @@ const Cart = (props) => {
                 <div className="col-md-8 cart-component-shopping-cart">
                     <h1>Shopping Cart</h1>
                     <hr width="100%"></hr>
-
                     {
                         cartProductsArray && cartProductsArray.map((product) => <ShoppingCart
                             key={product.id}
@@ -24,6 +23,14 @@ const Cart = (props) => {
                             >
                         </ShoppingCart>)
                     }
+                    <div className="cart-products-section-buttons">
+                        <div>
+                            <a className="btn btn-secondary" href="#nextStep" role="button">Next</a>
+                        </div>
+                        <div>
+                            <a className="btn btn-light" href="/" role="button">Cancel</a>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-md-4">
                     <h1>Summary</h1>

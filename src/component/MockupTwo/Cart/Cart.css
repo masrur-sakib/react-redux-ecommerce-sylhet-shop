@@ -12,3 +12,12 @@
     font-size: 30px;
     color: grey;
 }
+.cart-products-section-buttons{
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 50px;
+}
+.cart-products-section-buttons a{
+    padding: 10px 70px;
+    margin-right: 20px;
+}
