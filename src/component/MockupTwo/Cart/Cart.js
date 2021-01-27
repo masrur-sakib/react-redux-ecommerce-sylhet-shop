@@ -9,6 +9,12 @@ const Cart = (props) => {
     let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
     let cartProductsArray = JSON.parse(retrieveProductsLocal);
 
+    const handleClearCart = () => {
+        localStorage.clear();
+        window.location.reload();
+        return false;
+    }
+
     return (
         <div id="cart" className="cart-page">
             <CartPageTitle></CartPageTitle>
@@ -16,19 +22,24 @@ const Cart = (props) => {
                 <div className="col-md-8 cart-component-shopping-cart">
                     <h1>Shopping Cart</h1>
                     <hr width="100%"></hr>
-                    {
-                        cartProductsArray && cartProductsArray.map((product) => <ShoppingCart
-                            key={product.id}
-                            product={product}
-                            >
-                        </ShoppingCart>)
-                    }
+                    <div className="cart-products-details">
+                        {
+                            cartProductsArray && cartProductsArray.map((product) => <ShoppingCart
+                                key={product.id}
+                                product={product}
+                                >
+                            </ShoppingCart>)
+                        }
+                        {
+                            !cartProductsArray && <h4 className="text-danger text-center pt-5">Your Cart is empty</h4>
+                        }
+                    </div>
                     <div className="cart-products-section-buttons">
                         <div>
-                            <a className="btn btn-secondary" href="#nextStep" role="button">Next</a>
+                            <button className="btn btn-secondary" >Next</button>
                         </div>
                         <div>
-                            <a className="btn btn-light" href="/" role="button">Cancel</a>
+                            <button className="btn btn-light" onClick={() => handleClearCart()}>Cancel</button>
                         </div>
                     </div>
                 </div>

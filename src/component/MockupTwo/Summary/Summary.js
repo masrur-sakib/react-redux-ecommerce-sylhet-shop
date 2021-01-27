@@ -2,15 +2,20 @@ import React from 'react';
 import './Summary.css';
 
 const Summary = (props) => {
-    // Summary Data Calculation
     const {cartProductsArray} = props;
+    
+    // Summary Data Calculation
     let subTotal=0;
-    for(let i=0; i<cartProductsArray.length; i++){
-        const product = cartProductsArray[i];
-        subTotal = subTotal + product.price;
+    let taxes = 0;
+    let total = 0;
+    if(cartProductsArray){
+        for(let i=0; i<cartProductsArray.length; i++){
+            const product = cartProductsArray[i];
+            subTotal = subTotal + product.price;
+        }
+        taxes = subTotal*0.02;
+        total = subTotal + taxes;
     }
-    let taxes= subTotal*0.02;
-    let total = subTotal + taxes;
 
     return (
         <div className="summary-section">
