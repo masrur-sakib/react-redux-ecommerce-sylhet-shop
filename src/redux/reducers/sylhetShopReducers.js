@@ -1,5 +1,5 @@
 import ProductsData from "../../data/ProductsData/ProductsData";
-import { ADD_TO_CART, CLEAR_CART } from "../actions/sylhetShopActions";
+import { ADD_TO_CART, CLEAR_CART, PRODUCT_QUANTITY_CHANGE } from "../actions/sylhetShopActions";
 
 
 const initialState = {
@@ -23,17 +23,25 @@ const sylhetShopReducers = (state = initialState, action) => {
                     newCartLocal = [...cartProductsArray, action.product];
                     localStorage.setItem('setProductsLocal', [JSON.stringify(newCartLocal)]);
                     console.log("Product Added to the Cart");
+                    alert("Product Added to the Cart");
                 }
             }
             else{
                 newCartLocal = [action.product];
                 localStorage.setItem('setProductsLocal', [JSON.stringify(newCartLocal)]);
                 console.log("Product Added to the Cart");
+                alert("Product Added to the Cart");
             }
             return {
                 products: state.products,
                 cart: newCartLocal
             };
+        
+        // Quantity Change Function Work is going on ...
+        case PRODUCT_QUANTITY_CHANGE:
+            alert("Quantity Function is Working");
+            return true;
+            
         case CLEAR_CART:
             localStorage.clear();
             window.location.reload();

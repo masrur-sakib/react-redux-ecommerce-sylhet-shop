@@ -11,7 +11,7 @@ const Summary = (props) => {
     if(cartProductsArray){
         for(let i=0; i<cartProductsArray.length; i++){
             const product = cartProductsArray[i];
-            subTotal = subTotal + product.price;
+            subTotal = subTotal + (product.price*product.quantity);
         }
         taxes = subTotal*0.02;
         total = subTotal + taxes;
