@@ -18,14 +18,14 @@ const Cart = (props) => {
                     <hr width="100%"></hr>
                     <div className="cart-products-details">
                         {
-                            cart && cart.map((product) => <ShoppingCart
+                            cart.length>0 && cart.map((product) => <ShoppingCart
                                 key={product.id}
                                 product={product}
                                 >
                             </ShoppingCart>)
                         }
                         {
-                            !cart && <h4 className="text-danger text-center pt-5">Your Cart is empty</h4>
+                            cart.length===0 && <h4 className="text-danger text-center pt-5">Your Cart is empty</h4>
                         }
                     </div>
                     <div className="cart-products-section-buttons">

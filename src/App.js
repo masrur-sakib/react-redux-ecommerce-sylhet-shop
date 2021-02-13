@@ -27,8 +27,8 @@ function App() {
             <NotFound></NotFound>
           </Route>
         </Switch>
+        <Footer />
       </Router>
-      <Footer></Footer>
     </div>
   );
 }
