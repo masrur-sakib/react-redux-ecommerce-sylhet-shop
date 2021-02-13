@@ -1,6 +1,7 @@
 .site-navbar{
     padding: 0px 50px;
     box-shadow: 0px 5px 10px -10px #000000bf;
+    background-color: white;
 }
 li.nav-item .nav-link{
     padding: 0px 50px !important;
@@ -32,7 +33,7 @@ li.nav-item .nav-link{
     .site-navbar{
         padding: 0px 50px 0px 10px;
     }
-    li.nav-item a{
+    li.nav-item a, button{
         margin-bottom: 20px;
     }
 }

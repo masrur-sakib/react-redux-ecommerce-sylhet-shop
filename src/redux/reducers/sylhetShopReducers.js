@@ -3,49 +3,93 @@ import { ADD_TO_CART, CLEAR_CART, PRODUCT_QUANTITY_CHANGE } from "../actions/syl
 
 
 const initialState = {
-    products: ProductsData
+    products: ProductsData,
+    cart: [],
+    summaryData: {
+        subTotal: 0,
+        taxes: 0,
+        total: 0
+    }
 }
 
 const sylhetShopReducers = (state = initialState, action) => {
     switch(action.type){
         case ADD_TO_CART:
-            let newCartLocal;
-
-            // Storing data to localstorage
-            let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
-            let cartProductsArray = JSON.parse(retrieveProductsLocal);
-            if(cartProductsArray){
-                const sameProductLocal = cartProductsArray.find(pd => pd.id === action.product.id);
-                if(sameProductLocal){
+            let cartAfterAdd = [];
+            let summaryDataAfterAdd = {
+                subTotal: 0,
+                taxes: 0,
+                total: 0
+            }
+            if(state.cart){
+                cartAfterAdd = state.cart;
+                const productExists = state.cart.find(pd => pd.id === action.product.id);
+                if(productExists){
                     alert("Product Already Added to the Cart, You can change the quantity from Cart Page.")
                 }
                 else{
-                    newCartLocal = [...cartProductsArray, action.product];
-                    localStorage.setItem('setProductsLocal', [JSON.stringify(newCartLocal)]);
-                    console.log("Product Added to the Cart");
-                    alert("Product Added to the Cart");
+                    cartAfterAdd = [...cartAfterAdd, action.product];
+                    alert("Product Added to the Cart.");
                 }
             }
             else{
-                newCartLocal = [action.product];
-                localStorage.setItem('setProductsLocal', [JSON.stringify(newCartLocal)]);
-                console.log("Product Added to the Cart");
-                alert("Product Added to the Cart");
+                cartAfterAdd = [action.product];
+                alert("Product Added to the Cart.");
+            }
+
+            if(cartAfterAdd){
+                for(let i=0; i<cartAfterAdd.length; i++){
+                    const product = cartAfterAdd[i];
+                    summaryDataAfterAdd.subTotal = summaryDataAfterAdd.subTotal + (product.price*product.quantity);
+                }
+                summaryDataAfterAdd.taxes = summaryDataAfterAdd.subTotal*0.02;
+                summaryDataAfterAdd.total = summaryDataAfterAdd.subTotal + summaryDataAfterAdd.taxes;
             }
             return {
                 products: state.products,
-                cart: newCartLocal
+                cart: cartAfterAdd,
+                summaryData: summaryDataAfterAdd
             };
-        
-        // Quantity Change Function Work is going on ...
+
         case PRODUCT_QUANTITY_CHANGE:
-            alert("Quantity Function is Working");
-            return true;
+            let cartAfterQtyChange = state.cart;
+            let summaryDataAfterQtyChange = {
+                subTotal: 0,
+                taxes: 0,
+                total: 0
+            }
+            for(let i=0; i<cartAfterQtyChange.length; i++){
+                if(cartAfterQtyChange[i].id === action.productId){
+                    cartAfterQtyChange[i].quantity = parseInt(action.changedQtyValue);
+                }
+            }
+
+            if(cartAfterQtyChange){
+                for(let i=0; i<cartAfterQtyChange.length; i++){
+                    const product = cartAfterQtyChange[i];
+                    summaryDataAfterQtyChange.subTotal = summaryDataAfterQtyChange.subTotal + (product.price*product.quantity);
+                }
+                summaryDataAfterQtyChange.taxes = summaryDataAfterQtyChange.subTotal*0.02;
+                summaryDataAfterQtyChange.total = summaryDataAfterQtyChange.subTotal + summaryDataAfterQtyChange.taxes;
+            }
+            return {
+                products: state.products,
+                cart: cartAfterQtyChange,
+                summaryData: summaryDataAfterQtyChange
+            };
             
         case CLEAR_CART:
-            localStorage.clear();
-            window.location.reload();
-            return false;
+            window.location.href = "/";
+            return {
+                products: state.products,
+                cart: [],
+                summaryData: {
+                    subTotal: 0,
+                    taxes: 0,
+                    total: 0
+                },
+            };
+        
         default:
             return state;
     }

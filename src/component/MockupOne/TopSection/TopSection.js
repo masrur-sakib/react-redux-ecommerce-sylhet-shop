@@ -20,8 +20,8 @@ const TopSection = (props) => {
 
 const mapStateToProps = state => {
     return {
-        reduxCart: state.cart,
-        products: state.products
+        products: state.products,
+        cart: state.cart
     }
 };
 

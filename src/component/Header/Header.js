@@ -2,11 +2,12 @@ import React from 'react';
 import './Header.css';
 import siteLogo from '../../images/siteLogo.png';
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-md navbar-light site-navbar">
+            <nav className="navbar navbar-expand-md fixed-top navbar-light site-navbar">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">
                         <img src={siteLogo} alt="" width="220" height="70"></img>
@@ -23,7 +24,7 @@ const Header = () => {
                         <div>
                             <ul className="navbar-nav">
                                 <li className="nav-item active">
-                                    <a className="nav-link" aria-current="true" href="/">Home</a>
+                                    <Link className="nav-link" aria-current="true" to='/' >Home</Link>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#about">About</a>
@@ -35,8 +36,12 @@ const Header = () => {
                                     <a id="nav-last-item" className="nav-link" href="#help">Help</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="btn btn-secondary btn-large-screen" href="/cart" role="button"><FaShoppingCart /> Your Cart</a>
-                                    <a className="btn btn-secondary btn-small-screen" href="/cart" role="button"><FaShoppingCart /></a>
+                                    <Link to='/cart' style={{textDecoration: 'none'}} >
+                                        <div>
+                                            <button className="btn btn-secondary btn-large-screen"><FaShoppingCart /> Your Cart</button>
+                                            <button className="btn btn-secondary btn-small-screen"><FaShoppingCart /></button>
+                                        </div>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

@@ -4,31 +4,24 @@ import { productQuantityChange } from '../../../redux/actions/sylhetShopActions'
 import './ShoppingCart.css';
 
 const ShoppingCart = (props) => {
+    const { id, img, name, description, price, quantity } = props.product;
+    const { productQuantityChange } = props;
     return (
         <div className="shopping-cart-section">
             <div className="row cart-products-section">
                 <div className="col-md-3">
-                    <img src={props.product.img} alt=""></img>
+                    <img src={img} alt=""></img>
                 </div>
                 <div className="col-md-6">
-                    <p className="cart-product-name">{props.product.name}</p>
-                    <p className="cart-product-description">{props.product.description}</p>
-                    <p className="cart-product-price">${props.product.price}</p>
+                    <p className="cart-product-name">{name}</p>
+                    <p className="cart-product-description">{description}</p>
+                    <p className="cart-product-price">${price}</p>
                 </div>
                 <div className="col-md-3 product-quantity-input-section">
-                    <input className="product-quantity-input" type="number" defaultValue={props.product.quantity}  min="1" 
+                    <input className="product-quantity-input" type="number" name="quantity" min="1" defaultValue={quantity}
                     onChange={(e) => {
-                        let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
-                        let cartProductQtyChange = JSON.parse(retrieveProductsLocal);
-                        
-                        let productQuantityLocal = cartProductQtyChange.find(pd => pd.id === props.product.id);
-                        for(let i=0; i<cartProductQtyChange.length; i++){
-                            if(cartProductQtyChange[i].id === productQuantityLocal.id){
-                                cartProductQtyChange[i].quantity = parseInt(e.target.value);
-                                localStorage.setItem('setProductsLocal', [JSON.stringify(cartProductQtyChange)]);
-                                window.location.reload();
-                            }
-                        }
+                        let changedQtyValue = e.target.value;
+                        productQuantityChange(id, changedQtyValue)
                     }}
                     ></input>
                 </div>
@@ -40,13 +33,12 @@ const ShoppingCart = (props) => {
 
 const mapStateToProps = state => {
     return {
-        products: state.products
+        cart: state.cart
     }
 };
 
 const mapDispatchToProps = {
     productQuantityChange: productQuantityChange
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

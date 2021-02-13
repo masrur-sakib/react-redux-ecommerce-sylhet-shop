@@ -1,5 +1,6 @@
 .top-section{
     padding: 5%;
+    padding-top: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,6 +10,7 @@
     padding-bottom: 2%;
     font-size: 40px;
     color: grey;
+    text-align: center;
 }
 .top-section-image-section{
     display: flex;

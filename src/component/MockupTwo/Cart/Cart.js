@@ -7,10 +7,7 @@ import Summary from '../Summary/Summary';
 import CartPageTitle from '../CartPageTitle/CartPageTitle';
 
 const Cart = (props) => {
-    const {clearCart} = props;
-    // Retrieving Data from localstorage 
-    let retrieveProductsLocal = localStorage.getItem('setProductsLocal');
-    let cartProductsArray = JSON.parse(retrieveProductsLocal);
+    const {cart, clearCart} = props;
 
     return (
         <div id="cart" className="cart-page">
@@ -21,14 +18,14 @@ const Cart = (props) => {
                     <hr width="100%"></hr>
                     <div className="cart-products-details">
                         {
-                            cartProductsArray && cartProductsArray.map((product) => <ShoppingCart
+                            cart && cart.map((product) => <ShoppingCart
                                 key={product.id}
                                 product={product}
                                 >
                             </ShoppingCart>)
                         }
                         {
-                            !cartProductsArray && <h4 className="text-danger text-center pt-5">Your Cart is empty</h4>
+                            !cart && <h4 className="text-danger text-center pt-5">Your Cart is empty</h4>
                         }
                     </div>
                     <div className="cart-products-section-buttons">
@@ -43,7 +40,7 @@ const Cart = (props) => {
                 <div className="col-md-4">
                     <h1>Summary</h1>
                     <hr width="100%"></hr>
-                    <Summary cartProductsArray={cartProductsArray}></Summary>
+                    <Summary></Summary>
                 </div>
             </div>
         </div>
@@ -52,7 +49,8 @@ const Cart = (props) => {
 
 const mapStateToProps = state => {
     return {
-        products: state.products
+        products: state.products,
+        cart: state.cart
     }
 };
 
